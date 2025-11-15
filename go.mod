@@ -1,0 +1,3 @@
+module github.com/VINAYAK777CODER/STUDENTS-API
+
+go 1.25.4
