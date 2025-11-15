@@ -27,6 +27,7 @@ go.work.sum
 # env file
 .env
 storage
+config
 # Editor/IDE
 # .idea/
 # .vscode/
