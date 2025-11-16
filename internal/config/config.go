@@ -14,7 +14,7 @@ type HTTPServer struct {
 	// `yaml:"addr"` tells the YAML parser (cleanenv in our case) which YAML key
 	// maps to this field. When the YAML file contains `http_server:\n  addr: ...`
 	// it will fill this Addr value.
-	Addr string `yaml:"addr"`
+	Addr string `yaml:"addr" env-required:"true"`
 }
 
 // Config is the root configuration structure for the application.
