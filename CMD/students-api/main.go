@@ -1,16 +1,17 @@
 package main
 
 import (
-	"context"      // Provides cancellation, deadlines → used for graceful shutdown
-	"fmt"          // For printing messages to console
-	"log/slog"     // Modern structured logger (Go 1.21+)
-	"net/http"     // HTTP server, routing, Request/Response
-	"os"           // Access OS features (signals, env, process)
-	"os/signal"    // Used to catch CTRL+C or shutdown signals
-	"syscall"      // Provides OS-level signals like SIGTERM, SIGINT
-	"time"         // For timeouts: graceful shutdown timeout duration
+	"context"   // Provides cancellation, deadlines → used for graceful shutdown
+	"fmt"       // For printing messages to console
+	"log/slog"  // Modern structured logger (Go 1.21+)
+	"net/http"  // HTTP server, routing, Request/Response
+	"os"        // Access OS features (signals, env, process)
+	"os/signal" // Used to catch CTRL+C or shutdown signals
+	"syscall"   // Provides OS-level signals like SIGTERM, SIGINT
+	"time"      // For timeouts: graceful shutdown timeout duration
 
 	"github.com/VINAYAK777CODER/STUDENTS-API/internal/config" // Custom config loader
+	"github.com/VINAYAK777CODER/STUDENTS-API/internal/http/handlers/student"
 )
 
 func main() {
@@ -47,12 +48,7 @@ func main() {
 	//   w → ResponseWriter (we write response back to the client)
 	//   r → Request (contains request data)
 	//---------------------------------------------------------------------------
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-
-		// w.Write([]byte(...)) writes response bytes to client browser.
-		// Must convert string → []byte because Write accepts []byte.
-		w.Write([]byte(" hello this is student api page we welcome ! you"))
-	})
+	router.HandleFunc("POST /api/students", student.New())
 
 
 
